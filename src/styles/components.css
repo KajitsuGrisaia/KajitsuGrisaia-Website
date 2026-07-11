@@ -585,7 +585,7 @@
 
   .intro-sprite-walk {
     @apply h-10 w-10 opacity-55;
-    --intro-walk-y: 25rem;
+    --intro-walk-y: 26rem;
   }
 
   .profile-card-desktop {
