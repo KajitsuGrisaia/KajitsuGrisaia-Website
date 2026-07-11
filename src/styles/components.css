@@ -264,7 +264,7 @@
   }
 
   .support-card-icon {
-    @apply h-7 w-7 shrink-0 rounded-sm object-contain;
+    @apply h-7 w-7 shrink-0 rounded-full bg-[#11111b]/50 object-contain p-0.5 text-[#b4befe];
   }
 
   .support-card-text {

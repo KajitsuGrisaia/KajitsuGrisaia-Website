@@ -11,6 +11,10 @@ defineProps({
     type: Array,
     required: true,
   },
+  hireLink: {
+    type: Object,
+    required: true,
+  },
   supportLink: {
     type: Object,
     required: true,
@@ -51,17 +55,34 @@ const emit = defineEmits(['open-email'])
   </div>
 
   <a
+    :href="hireLink.href"
+    :target="hireLink.href === '#' ? undefined : '_blank'"
+    :rel="hireLink.href === '#' ? undefined : 'noreferrer'"
+    class="support-card"
+    @click="hireLink.href === '#' ? $event.preventDefault() : undefined"
+    @mouseenter="animateCard($event, true)"
+    @mouseleave="animateCard($event, false)"
+  >
+    <span class="support-card-content">
+      <img src="/assets/fiverr-icon.png" alt="" class="support-card-icon" />
+      <span class="support-card-text">
+        <span class="support-card-label">{{ hireLink.label }}</span>
+        <span class="support-card-detail">{{ hireLink.detail }}</span>
+      </span>
+    </span>
+    <ExternalLink class="app-icon shrink-0 text-[#b4befe]" />
+  </a>
+
+  <a
     :href="supportLink.href"
+    target="_blank"
+    rel="noreferrer"
     class="support-card"
     @mouseenter="animateCard($event, true)"
     @mouseleave="animateCard($event, false)"
   >
     <span class="support-card-content">
-      <img
-        src="/assets/buy-me-coffee-icon.webp"
-        alt=""
-        class="support-card-icon"
-      />
+      <BrandIcon :name="supportLink.type" class="support-card-icon" />
       <span class="support-card-text">
         <span class="support-card-label">{{ supportLink.label }}</span>
         <span class="support-card-detail">{{ supportLink.detail }}</span>

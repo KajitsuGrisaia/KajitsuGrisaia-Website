@@ -3,6 +3,7 @@ import { computed } from 'vue'
 import {
   siDiscord,
   siGithub,
+  siPaypal,
   siReddit,
   siX,
   siYoutube,
@@ -21,6 +22,7 @@ const icons = {
   x: siX,
   reddit: siReddit,
   youtube: siYoutube,
+  paypal: siPaypal,
 }
 
 const icon = computed(() => icons[props.name])

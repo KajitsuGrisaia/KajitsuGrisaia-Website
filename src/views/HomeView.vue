@@ -21,6 +21,7 @@ const portfolio = usePortfolioStore()
 const {
   activeSection,
   contactLinks,
+  hireLink,
   language,
   navCopy,
   projects,
@@ -295,6 +296,7 @@ onUnmounted(() => {
         v-else-if="section.id === 'contact'"
         :animate-card="animateCard"
         :contact-links="contactLinks"
+        :hire-link="hireLink"
         :support-link="supportLink"
         @open-email="openEmailForm"
       />

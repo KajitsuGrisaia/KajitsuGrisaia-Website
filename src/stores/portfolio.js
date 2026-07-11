@@ -72,6 +72,9 @@ export const usePortfolioStore = defineStore('portfolio', {
     supportLink() {
       return this.content.supportLink
     },
+    hireLink() {
+      return this.content.hireLink
+    },
     navCopy() {
       return this.content.nav
     },

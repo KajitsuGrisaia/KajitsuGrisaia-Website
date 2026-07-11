@@ -153,9 +153,15 @@ export const localizedPortfolio = {
       },
     ],
     supportLink: {
-      label: 'Buy Me a Coffee',
+      label: 'Support Me ❤️',
+      href: 'https://paypal.me/KajitsuGrisaia',
+      detail: 'paypal.me/KajitsuGrisaia',
+      type: 'paypal',
+    },
+    hireLink: {
+      label: 'Hire me',
       href: '#',
-      detail: 'Support link coming soon',
+      detail: 'Fiverr gig coming soon',
     },
   },
   es: {
@@ -312,9 +318,15 @@ export const localizedPortfolio = {
       },
     ],
     supportLink: {
-      label: 'Buy Me a Coffee',
+      label: 'Support Me ❤️',
+      href: 'https://paypal.me/KajitsuGrisaia',
+      detail: 'paypal.me/KajitsuGrisaia',
+      type: 'paypal',
+    },
+    hireLink: {
+      label: 'Hire me',
       href: '#',
-      detail: 'Enlace de apoyo próximamente',
+      detail: 'Fiverr gig próximamente',
     },
   },
 }
