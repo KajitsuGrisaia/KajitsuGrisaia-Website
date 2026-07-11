@@ -1,11 +1,7 @@
 <script setup>
 import { nextTick, onMounted, onUnmounted, ref, watch } from 'vue'
 import { storeToRefs } from 'pinia'
-import {
-  useEventListener,
-  usePreferredReducedMotion,
-  useWindowSize,
-} from '@vueuse/core'
+import { useEventListener, usePreferredReducedMotion } from '@vueuse/core'
 import { animate } from 'motion'
 import Lenis from 'lenis'
 import { gsap } from 'gsap'
@@ -33,7 +29,6 @@ const {
   techStack,
 } = storeToRefs(portfolio)
 const preferredMotion = usePreferredReducedMotion()
-const { width } = useWindowSize()
 
 const audioElement = ref(null)
 const isMusicPlaying = ref(false)
@@ -247,10 +242,8 @@ onUnmounted(() => {
       @pause="isMusicPlaying = false"
       @play="isMusicPlaying = true"
     />
-    <ParticleField :disabled="preferredMotion === 'reduce' || width < 768" />
-    <BackgroundEffects
-      :disabled="preferredMotion === 'reduce' || width < 768"
-    />
+    <ParticleField :disabled="preferredMotion === 'reduce'" />
+    <BackgroundEffects :disabled="preferredMotion === 'reduce'" />
 
     <LanguageToggle
       :language="language"

@@ -29,6 +29,7 @@
 
   .page-surface {
     @apply relative z-10 flex min-h-screen items-center overflow-hidden bg-[#11111b]/72 px-5 py-20 md:px-16 md:py-28;
+    min-height: 100svh;
   }
 
   .section-background-image {
@@ -53,7 +54,7 @@
   }
 
   .section-runner {
-    @apply pointer-events-none absolute left-0 z-20 object-contain opacity-80;
+    @apply pointer-events-none absolute left-0 z-0 object-contain opacity-80;
     --runner-forward-scale: 1;
     image-rendering: pixelated;
     transform: translate(-160%, 0) scaleX(1);
@@ -71,7 +72,7 @@
   }
 
   .intro-sprite {
-    @apply pointer-events-none absolute left-0 z-20 object-contain opacity-75;
+    @apply pointer-events-none absolute left-0 z-0 object-contain opacity-75;
     image-rendering: pixelated;
   }
 
@@ -89,7 +90,7 @@
   }
 
   .project-coin-row {
-    @apply pointer-events-none absolute left-1/2 z-20 flex w-screen -translate-x-1/2 items-center justify-between px-3 opacity-85 sm:px-5 md:px-8;
+    @apply pointer-events-none absolute left-1/2 z-0 flex w-screen -translate-x-1/2 items-center justify-between px-3 opacity-85 sm:px-5 md:px-8;
   }
 
   .project-coin-row-top {
@@ -175,7 +176,7 @@
   }
 
   .project-grid {
-    @apply mt-7 grid gap-3 md:mt-10 md:grid-cols-2 md:gap-5;
+    @apply relative z-10 mt-7 grid gap-3 md:mt-10 md:grid-cols-2 md:gap-5;
   }
 
   .project-card {
@@ -195,7 +196,7 @@
   }
 
   .tech-stack-grid {
-    @apply mt-7 grid gap-3 sm:grid-cols-2 md:mt-10 md:gap-4 xl:grid-cols-4;
+    @apply relative z-10 mt-7 grid gap-3 sm:grid-cols-2 md:mt-10 md:gap-4 xl:grid-cols-4;
   }
 
   .tech-card {
@@ -215,7 +216,7 @@
   }
 
   .contact-grid {
-    @apply mt-7 grid gap-3 sm:grid-cols-3 md:mt-10 lg:grid-cols-6;
+    @apply relative z-10 mt-7 grid gap-3 sm:grid-cols-3 md:mt-10 lg:grid-cols-6;
   }
 
   .contact-card {
@@ -503,5 +504,67 @@
 
   .project-detail-link {
     @apply mt-8 inline-flex items-center gap-2 rounded-md bg-[#b4befe] px-5 py-3 font-semibold text-[#11111b];
+  }
+}
+
+@media (orientation: landscape) and (max-width: 1180px) {
+  .page-surface {
+    @apply items-center px-6;
+    padding-top: 4.25rem;
+    padding-bottom: 4.25rem;
+  }
+
+  .section-eyebrow {
+    @apply mb-2 text-[0.65rem];
+  }
+
+  .section-title {
+    @apply text-3xl sm:text-4xl md:text-5xl;
+  }
+
+  .section-body {
+    @apply mt-3 max-w-3xl text-sm leading-6;
+  }
+
+  .project-grid,
+  .tech-stack-grid,
+  .contact-grid {
+    @apply mt-4;
+  }
+
+  .project-card,
+  .tech-card,
+  .contact-card {
+    @apply p-3;
+  }
+
+  .project-coin-row-top {
+    top: 0.75rem;
+  }
+
+  .project-coin-row-bottom {
+    bottom: 0.75rem;
+  }
+
+  .project-coin {
+    @apply h-6 w-6;
+  }
+
+  .section-runner-contact,
+  .section-runner-stack {
+    @apply bottom-3 h-12 w-12 opacity-55;
+  }
+
+  .intro-sprite-fly {
+    @apply top-3 h-16 w-16 opacity-55;
+  }
+
+  .intro-sprite-walk {
+    @apply h-10 w-10 opacity-55;
+    --intro-walk-y: calc(100svh - 4.5rem);
+  }
+
+  .profile-card-desktop {
+    @apply h-44 w-44;
   }
 }
