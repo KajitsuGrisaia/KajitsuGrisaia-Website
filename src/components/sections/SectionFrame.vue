@@ -1,6 +1,5 @@
 <script setup>
-import { computed, onMounted, onUnmounted, reactive } from 'vue'
-import { useWindowSize } from '@vueuse/core'
+import { onMounted, onUnmounted, reactive } from 'vue'
 
 const props = defineProps({
   contentClass: {
@@ -25,9 +24,6 @@ const characterState = reactive({
 })
 
 const timers = []
-const { width } = useWindowSize()
-
-const coinCount = computed(() => Math.max(9, Math.ceil(width.value / 40)))
 
 function randomWait() {
   return 3000 + Math.random() * 2000
@@ -121,32 +117,6 @@ onUnmounted(() => {
       class="section-runner section-runner-contact"
       @animationend="scheduleCharacter('megaman')"
     />
-    <div
-      v-if="section.id === 'projects'"
-      aria-hidden="true"
-      class="project-coin-row project-coin-row-top"
-    >
-      <img
-        v-for="coinIndex in coinCount"
-        :key="`top-${coinIndex}`"
-        src="/assets/mario-coin-transparent.gif"
-        alt=""
-        class="project-coin"
-      />
-    </div>
-    <div
-      v-if="section.id === 'projects'"
-      aria-hidden="true"
-      class="project-coin-row project-coin-row-bottom"
-    >
-      <img
-        v-for="coinIndex in coinCount"
-        :key="`bottom-${coinIndex}`"
-        src="/assets/mario-coin-transparent.gif"
-        alt=""
-        class="project-coin"
-      />
-    </div>
     <img
       v-if="section.id === 'stack' && characterState.hollow"
       :key="characterState.hollowKey"
