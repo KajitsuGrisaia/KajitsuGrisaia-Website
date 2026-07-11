@@ -63,7 +63,7 @@ function scheduleCharacter(name) {
 
 function scheduleMarioWalk() {
   characterState.marioFly = false
-  schedule(() => showCharacter('marioWalk'))
+  schedule(() => showCharacter('marioWalk'), 700)
 }
 
 function scheduleMarioFly() {

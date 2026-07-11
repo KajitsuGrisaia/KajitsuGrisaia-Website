@@ -77,7 +77,7 @@
   }
 
   .intro-sprite-fly {
-    @apply top-16 h-20 w-20 sm:h-24 sm:w-24 md:top-20 md:h-28 md:w-28 lg:h-32 lg:w-32;
+    @apply top-6 h-20 w-20 sm:top-10 sm:h-24 sm:w-24 md:top-20 md:h-28 md:w-28 lg:h-32 lg:w-32;
     animation: intro-mario-fly 12s linear both;
     transform: translate(-160%, 0) scaleX(1);
   }
