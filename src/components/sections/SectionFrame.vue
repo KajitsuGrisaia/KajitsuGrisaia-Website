@@ -34,10 +34,7 @@ const coinCount = computed(() => {
 })
 
 function shouldRunDecorativeSprites() {
-  return (
-    !window.matchMedia('(pointer: coarse)').matches &&
-    window.matchMedia('(min-width: 1024px)').matches
-  )
+  return !window.matchMedia('(prefers-reduced-motion: reduce)').matches
 }
 
 function randomWait() {

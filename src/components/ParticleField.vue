@@ -18,7 +18,9 @@ let animationFrame
 let lastRenderTime = 0
 
 function isCompactViewport() {
-  return window.innerWidth < 768 || window.matchMedia('(pointer: coarse)').matches
+  return (
+    window.innerWidth < 768 || window.matchMedia('(pointer: coarse)').matches
+  )
 }
 
 function resize() {

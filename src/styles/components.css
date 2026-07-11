@@ -1,6 +1,6 @@
 @layer components {
   .site-shell {
-    @apply min-h-screen overflow-x-hidden bg-[#11111b] text-[#cdd6f4];
+    @apply min-h-screen overflow-x-hidden bg-[#0e0e17] text-[#cdd6f4];
   }
 
   .app-icon {
@@ -28,7 +28,7 @@
   }
 
   .page-surface {
-    @apply relative z-10 flex min-h-screen items-center overflow-hidden bg-[#11111b]/72 px-5 py-20 md:px-16 md:py-28;
+    @apply relative z-10 flex min-h-screen items-center overflow-hidden bg-[#0e0e17]/70 px-5 py-20 md:px-16 md:py-28;
     min-height: 100svh;
   }
 
@@ -94,7 +94,7 @@
   }
 
   .project-coin-row-top {
-    @apply top-28 sm:top-32 md:top-36;
+    @apply top-20 sm:top-24 md:top-32;
   }
 
   .project-coin-row-bottom {
