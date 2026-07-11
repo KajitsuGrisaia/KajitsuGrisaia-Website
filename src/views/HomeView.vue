@@ -37,6 +37,7 @@ const isEmailFormOpen = ref(false)
 const volumeBars = [1, 2, 3, 4]
 
 let lenis
+let lenisAnimationFrame
 let sectionAnimationObserver
 let scrollAnimationFrame
 
@@ -172,16 +173,22 @@ onMounted(async () => {
   await nextTick()
   applyVolume(volumeLevel.value)
 
-  if (preferredMotion.value !== 'reduce') {
+  const shouldUseSmoothScroll =
+    preferredMotion.value !== 'reduce' &&
+    window.matchMedia('(pointer: fine)').matches
+
+  if (shouldUseSmoothScroll) {
     lenis = new Lenis({ lerp: 0.08, smoothWheel: true })
 
     function raf(time) {
       lenis?.raf(time)
-      requestAnimationFrame(raf)
+      lenisAnimationFrame = requestAnimationFrame(raf)
     }
 
-    requestAnimationFrame(raf)
+    lenisAnimationFrame = requestAnimationFrame(raf)
+  }
 
+  if (preferredMotion.value !== 'reduce') {
     gsap.from('.page-surface', {
       autoAlpha: 0,
       duration: 0.7,
@@ -228,6 +235,7 @@ onUnmounted(() => {
   lenis?.destroy()
   audioElement.value?.pause()
 
+  if (lenisAnimationFrame) cancelAnimationFrame(lenisAnimationFrame)
   if (scrollAnimationFrame) cancelAnimationFrame(scrollAnimationFrame)
 })
 </script>

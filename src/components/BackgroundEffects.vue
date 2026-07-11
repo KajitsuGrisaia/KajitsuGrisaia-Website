@@ -57,7 +57,6 @@ onUnmounted(() => {
     :class="{ 'motion-disabled': disabled }"
     aria-hidden="true"
   >
-    <div class="background-particles" />
     <div class="background-spotlight" />
     <span
       v-for="ripple in ripples"

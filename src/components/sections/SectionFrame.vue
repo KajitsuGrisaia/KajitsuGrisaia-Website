@@ -1,5 +1,6 @@
 <script setup>
-import { onMounted, onUnmounted, reactive } from 'vue'
+import { computed, onMounted, onUnmounted, reactive } from 'vue'
+import { useWindowSize } from '@vueuse/core'
 
 const props = defineProps({
   contentClass: {
@@ -24,6 +25,20 @@ const characterState = reactive({
 })
 
 const timers = []
+const { width } = useWindowSize()
+
+const coinCount = computed(() => {
+  if (width.value < 640) return Math.max(6, Math.ceil(width.value / 72))
+  if (width.value < 1024) return Math.max(8, Math.ceil(width.value / 64))
+  return Math.max(9, Math.ceil(width.value / 48))
+})
+
+function shouldRunDecorativeSprites() {
+  return (
+    !window.matchMedia('(pointer: coarse)').matches &&
+    window.matchMedia('(min-width: 1024px)').matches
+  )
+}
 
 function randomWait() {
   return 3000 + Math.random() * 2000
@@ -60,6 +75,8 @@ function scheduleMarioFly() {
 }
 
 onMounted(() => {
+  if (!shouldRunDecorativeSprites()) return
+
   if (props.section.id === 'contact') {
     schedule(() => showCharacter('megaman'))
   }
@@ -117,6 +134,32 @@ onUnmounted(() => {
       class="section-runner section-runner-contact"
       @animationend="scheduleCharacter('megaman')"
     />
+    <div
+      v-if="section.id === 'projects'"
+      aria-hidden="true"
+      class="project-coin-row project-coin-row-top"
+    >
+      <img
+        v-for="coinIndex in coinCount"
+        :key="`top-${coinIndex}`"
+        src="/assets/mario-coin-transparent.gif"
+        alt=""
+        class="project-coin"
+      />
+    </div>
+    <div
+      v-if="section.id === 'projects'"
+      aria-hidden="true"
+      class="project-coin-row project-coin-row-bottom"
+    >
+      <img
+        v-for="coinIndex in coinCount"
+        :key="`bottom-${coinIndex}`"
+        src="/assets/mario-coin-transparent.gif"
+        alt=""
+        class="project-coin"
+      />
+    </div>
     <img
       v-if="section.id === 'stack' && characterState.hollow"
       :key="characterState.hollowKey"

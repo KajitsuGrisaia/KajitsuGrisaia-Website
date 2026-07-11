@@ -15,6 +15,11 @@ let scene
 let camera
 let particles
 let animationFrame
+let lastRenderTime = 0
+
+function isCompactViewport() {
+  return window.innerWidth < 768 || window.matchMedia('(pointer: coarse)').matches
+}
 
 function resize() {
   if (!renderer || !camera) return
@@ -42,14 +47,17 @@ onMounted(() => {
   renderer = new THREE.WebGLRenderer({
     canvas: canvas.value,
     alpha: true,
-    antialias: true,
+    antialias: false,
+    powerPreference: 'low-power',
   })
 
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.7))
+  renderer.setPixelRatio(
+    Math.min(window.devicePixelRatio, isCompactViewport() ? 1 : 1.35),
+  )
   renderer.setSize(window.innerWidth, window.innerHeight, false)
 
   const geometry = new THREE.BufferGeometry()
-  const particleCount = 130
+  const particleCount = isCompactViewport() ? 56 : 96
   const positions = new Float32Array(particleCount * 3)
 
   for (let index = 0; index < particleCount; index += 1) {
@@ -64,23 +72,27 @@ onMounted(() => {
     geometry,
     new THREE.PointsMaterial({
       color: 0xc084fc,
-      size: 0.035,
+      size: isCompactViewport() ? 0.045 : 0.035,
       transparent: true,
-      opacity: 0.42,
+      opacity: isCompactViewport() ? 0.5 : 0.38,
     }),
   )
 
   scene.add(particles)
   window.addEventListener('resize', resize)
 
-  function render() {
+  function render(time) {
+    animationFrame = requestAnimationFrame(render)
+
+    if (time - lastRenderTime < 33) return
+    lastRenderTime = time
+
     particles.rotation.y += 0.0009
     particles.rotation.x += 0.00035
     renderer.render(scene, camera)
-    animationFrame = requestAnimationFrame(render)
   }
 
-  render()
+  animationFrame = requestAnimationFrame(render)
 })
 
 onUnmounted(() => {

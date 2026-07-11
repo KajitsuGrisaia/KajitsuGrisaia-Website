@@ -19,24 +19,6 @@
   );
 }
 
-.background-particles {
-  position: absolute;
-  inset: 0;
-  opacity: 0.46;
-  background-image:
-    radial-gradient(circle, rgb(180 190 254 / 0.42) 0 1px, transparent 1.5px),
-    radial-gradient(circle, rgb(205 214 244 / 0.28) 0 1px, transparent 1.5px),
-    radial-gradient(circle, rgb(166 173 200 / 0.24) 0 1px, transparent 1.5px);
-  background-position:
-    16px 22px,
-    72px 104px,
-    132px 54px;
-  background-size:
-    132px 132px,
-    178px 178px,
-    224px 224px;
-}
-
 .motion-disabled .background-spotlight {
   background: radial-gradient(
     circle 74px at 50% 42%,
@@ -61,7 +43,7 @@
   position: fixed;
   inset: 0;
   z-index: 0;
-  opacity: 0.82;
+  opacity: 0.7;
 }
 
 @keyframes ripple-pop {
@@ -203,12 +185,8 @@
 }
 
 @media (max-width: 767px) {
-  .background-particles {
-    opacity: 0.58;
-    background-size:
-      96px 96px,
-      132px 132px,
-      168px 168px;
+  .project-coin {
+    animation: none;
   }
 
   .background-spotlight {
