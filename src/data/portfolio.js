@@ -11,7 +11,7 @@ export const localizedPortfolio = {
         preview:
           "Full-stack developer, showing what I love, what I'm learning, and what I'm planning.",
         eyebrow: 'Introduction',
-        title: 'I am KajitsuGrisaia.',
+        title: 'Greetings, I am KajitsuGrisaia.',
         body: 'Bilingual software engineer and full-stack developer who loves coding while listening to Megadeth. Outside of software, I spend time playing metal on guitar, learning game and anime songs on piano, watching anime, and studying languages. I am currently learning German, Portuguese, and Russian.',
       },
       {
